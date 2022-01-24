@@ -19,10 +19,8 @@ func main() {
 		err error
 	)
 
-	flag.BoolVar(&isStringify, "s", false, "Print JSON in single line")
-	flag.BoolVar(&isStringify, "stringify", false, "Print JSON in single line")
-	flag.BoolVar(&isPrettify, "p", false, "Print the prettified JSON input")
-	flag.BoolVar(&isPrettify, "prettify", false, "Print the prettified JSON input")
+	flag.BoolVar(&isStringify, "s", false, "Stringify: Print JSON in single line")
+	flag.BoolVar(&isPrettify, "p", false, "Prettify: Print prettified JSON input")
 	flag.Parse()
 
 	var in string
