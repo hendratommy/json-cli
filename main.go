@@ -21,7 +21,7 @@ func main() {
 		err error
 	)
 
-	flag.BoolVar(&isCompact, "c", false, "Compact: Compact JSON input")
+	flag.BoolVar(&isCompact, "c", false, "Compact: Compact JSON input in single line")
 	flag.BoolVar(&isPrettify, "p", false, "Prettify: Print prettified JSON input")
 	flag.BoolVar(&isStringify, "s", false, "Stringify: Print stringified JSON string")
 	flag.Parse()
