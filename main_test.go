@@ -7,11 +7,20 @@ var (
     "firstName": "John",
     "lastName": "Doe"
 }`
-	singleLine = `{"firstName":"John","lastName":"Doe"}`
+	singleLine  = `{"firstName":"John","lastName":"Doe"}`
+	stringified = `"{\"firstName\":\"John\",\"lastName\":\"Doe\"}"`
 )
 
-func TestStringify(t *testing.T) {
-	out, err := Stringify(multiLine)
+func TestCompact(t *testing.T) {
+	out, err := Compact(multiLine)
+	if err != nil {
+		t.Error(err)
+	}
+	if out != singleLine {
+		t.Errorf("Expected: %s; Got: %s", singleLine, out)
+	}
+
+	out, err = Compact(stringified)
 	if err != nil {
 		t.Error(err)
 	}
@@ -28,22 +37,40 @@ func TestPrettify(t *testing.T) {
 	if out != multiLine {
 		t.Errorf("Expected: %s; Got: %s", multiLine, out)
 	}
-}
 
-func TestPrettify_Stringify(t *testing.T) {
-	out, err := Prettify(singleLine)
+	out, err = Prettify(stringified)
 	if err != nil {
 		t.Error(err)
 	}
 	if out != multiLine {
 		t.Errorf("Expected: %s; Got: %s", multiLine, out)
 	}
+}
 
-	out, err = Stringify(out)
+func TestStringify(t *testing.T) {
+	out, err := Stringify(singleLine)
 	if err != nil {
 		t.Error(err)
 	}
-	if out != singleLine {
-		t.Errorf("Expected: %s; Got: %s", multiLine, out)
+	if out != stringified {
+		t.Errorf("Expected: %s; Got: %s", stringified, out)
 	}
 }
+
+//func TestPrettify_Stringify(t *testing.T) {
+//	out, err := Prettify(singleLine)
+//	if err != nil {
+//		t.Error(err)
+//	}
+//	if out != multiLine {
+//		t.Errorf("Expected: %s; Got: %s", multiLine, out)
+//	}
+//
+//	out, err = Stringify(out)
+//	if err != nil {
+//		t.Error(err)
+//	}
+//	if out != singleLine {
+//		t.Errorf("Expected: %s; Got: %s", multiLine, out)
+//	}
+//}
