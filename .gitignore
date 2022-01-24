@@ -1,0 +1,11 @@
+.DS_Store
+.idea
+.iml
+.vscode
+*.env
+!sample.env
+*.out
+*.exe
+*.sh
+bin/
+*.csv
