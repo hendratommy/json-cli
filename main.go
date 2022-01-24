@@ -26,11 +26,6 @@ func main() {
 	flag.BoolVar(&isStringify, "s", false, "Stringify: Print stringified JSON string")
 	flag.Parse()
 
-	if isStringify || isCompact || isPrettify {
-		fmt.Println("Invalid argument, -s cannot be used with -c or -p")
-		os.Exit(0)
-	}
-
 	var in string
 	if len(flag.Args()) > 0 {
 		in = strings.Join(flag.Args(), "")
