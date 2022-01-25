@@ -64,15 +64,14 @@ func main() {
 }
 
 func unquote(s string) string {
-	out, err := strconv.Unquote(s)
-	if err != nil {
-		if err == strconv.ErrSyntax {
-			return s
-		} else {
+	if s[0] == '"' {
+		out, err := strconv.Unquote(s)
+		if err != nil {
 			panic(err)
 		}
+		return out
 	}
-	return out
+	return s
 }
 
 func Compact(s string) (string, error) {
